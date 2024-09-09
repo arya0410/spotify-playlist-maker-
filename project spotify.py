@@ -1,10 +1,11 @@
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
+import os
 
-# Your Spotify API credentials
-CLIENT_ID = '20a13cbaecb34145a2ac80f235eb7249'
-CLIENT_SECRET = '4e56d367775746d281be4a378e8cc262'
-REDIRECT_URI = 'http://localhost:8888/callback'  # Use your actual Redirect URI
+# Get Spotify API credentials from environment variables
+CLIENT_ID = os.getenv('SPOTIPY_CLIENT_ID')
+CLIENT_SECRET = os.getenv('SPOTIPY_CLIENT_SECRET')
+REDIRECT_URI = os.getenv('SPOTIPY_REDIRECT_URI')
 SCOPE = 'playlist-modify-public playlist-modify-private'
 
 # Authenticate and create a Spotify API client
@@ -31,7 +32,7 @@ def add_tracks_to_playlist(playlist_id, track_ids):
 def main():
     # Input list of songs
     song_list = [
-        "kal ho na ho", "chak de india "
+        "kal ho na ho", "chak de india"
     ]
 
     # Get current user ID
